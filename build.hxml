@@ -1,0 +1,9 @@
+-cp src
+-cp test-src
+-D js-es5
+-dce full
+-main TestRunner
+-js test.js
+
+
+

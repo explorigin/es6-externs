@@ -1,0 +1,13 @@
+{
+    "name": "js-es6",
+    "url" : "https://github.com/explorigin/js-es6/",
+    "license": "mit",
+    "tags": ["js", "web", "html5", "haxe", "javascript", "macro", "html", "ufront"],
+    "description": "This library provides as many ES6 features as possible with macros.",
+    "version": "0.0.1",
+    "classPath": "src/",
+    "releasenote": "Initial release.",
+    "contributors": ["explorigin"],
+    "dependencies": {
+    }
+}
