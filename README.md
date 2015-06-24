@@ -17,3 +17,5 @@ To ensure that your platform can run the ES6 output correctly, run the tests.
 - StringTools
 	- trim uses String.trim() native implementation (this is really an ES5 feature)
 
+- StringMap
+    - implemented as a wrapper around ES6 Map type
