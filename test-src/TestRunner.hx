@@ -7,6 +7,7 @@ class TestRunner {
         var r = new haxe.unit.TestRunner();
 
         r.add(new es6_tests.TestStringTools());
+        r.add(new es6_tests.TestMap());
         r.run();
     }
 

@@ -1,7 +1,5 @@
 package es6_tests;
 
-import StringTools;
-
 using StringTools;
 
 class TestStringTools extends haxe.unit.TestCase {
