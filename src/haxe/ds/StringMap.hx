@@ -1,6 +1,7 @@
 package haxe.ds;
 
-private class StringMapIterator<T> {
+
+@:noCompletion @:noDoc class MapIteratorAdapter<T> {
     var iter: es6.Iterator<T>;
     var done: Bool;
     var initialized: Bool = false;
@@ -44,11 +45,11 @@ private class StringMapIterator<T> {
     public inline function remove( key : String ) : Bool return m.delete(key);
 
     public function keys() : Iterator<String> {
-        return new StringMapIterator<String>(m.keys());
+        return new MapIteratorAdapter<String>(m.keys());
     }
 
     public inline function iterator() : Iterator<T> {
-        return new StringMapIterator<T>(m.values());
+        return new MapIteratorAdapter<T>(m.values());
     }
 
     public function toString() : String {
