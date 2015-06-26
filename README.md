@@ -2,7 +2,7 @@
 
 This project is an experiment to see how many ES6 features can be supported by Haxe purely with macros.
 
-**NOTE** Many of the files in this project are modifications on files from the Haxe Standard Library.  Such files have their own license at the top.  For all other files, the included LICENSE file applies.
+**NOTE**: Some of the files in this project are modifications on files from the Haxe Standard Library.  Such files have their own license at the top.  For all other files, the included LICENSE file applies.
 
 ## Run tests
 
