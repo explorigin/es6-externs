@@ -1,0 +1,7 @@
+-cp test-src
+-cp src
+-cp test-bench
+-js bench.js
+-D analyzer
+-D native-trim
+-main BenchmarkTrim
