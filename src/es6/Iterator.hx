@@ -18,16 +18,23 @@ class MapIteratorAdapter<T> {
     public inline function new(iter:es6.Iterator<T>) {
         this.iter = iter;
     }
+
+    private inline function initialize() {
+        var i = iter.next();
+        done = i.done;
+        pendingValue = i.value;
+        initialized = true;
+    }
+
     public inline function hasNext(): Bool {
         if (initialized == false) {
-            next();
+            initialize();
         }
         return !done;
     }
     public inline function next(): T {
         if (initialized == false) {
-            initialized = true;
-            next();
+            initialize();
         }
 
         var val = pendingValue;

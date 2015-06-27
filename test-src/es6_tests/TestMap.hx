@@ -55,6 +55,18 @@ class TestMap extends haxe.unit.TestCase {
         assertEquals(iter.next(), 2);
         assertEquals(iter.next(), 1);
         assertEquals(iter.next(), null);
+
+        var iter = new es6.Iterator.MapIteratorAdapter<Int>(m.values());
+
+        assertEquals(iter.hasNext(), true);
+        assertEquals(iter.next(), 3);
+        assertEquals(iter.hasNext(), true);
+        assertEquals(iter.next(), 2);
+        assertEquals(iter.hasNext(), true);
+        assertEquals(iter.next(), 1);
+        assertEquals(iter.hasNext(), false);
+        assertEquals(iter.next(), null);
+        assertEquals(iter.hasNext(), false);
     }
 
     public function testIntMap() {
