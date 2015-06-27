@@ -1,7 +1,7 @@
 package haxe.ds;
 
 @:coreApi class ObjectMap<K:{ }, T> implements haxe.Constraints.IMap<K, T> {
-    var m = new es6.Map<K, T>();
+    var m = new js.Map<K, T>();
 
     public function new() {};
 
@@ -14,11 +14,11 @@ package haxe.ds;
     public inline function remove( key : K ) : Bool return m.delete(key);
 
     public function keys() : Iterator<K> {
-        return new es6.Iterator.MapIteratorAdapter<K>(m.keys());
+        return new js.Iterator.MapIteratorAdapter<K>(m.keys());
     }
 
     public inline function iterator() : Iterator<T> {
-        return new es6.Iterator.MapIteratorAdapter<T>(m.values());
+        return new js.Iterator.MapIteratorAdapter<T>(m.values());
     }
 
     public function toString() : String {

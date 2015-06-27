@@ -1,4 +1,4 @@
-package es6;
+package js;
 
 typedef IteratorValue<T> = {
     value: T,
@@ -10,12 +10,12 @@ typedef Iterator<T> = {
 };
 
 class MapIteratorAdapter<T> {
-    var iter: es6.Iterator<T>;
+    var iter: js.Iterator<T>;
     var done: Bool;
     var initialized: Bool = false;
     var pendingValue: T;
 
-    public inline function new(iter:es6.Iterator<T>) {
+    public inline function new(iter:js.Iterator<T>) {
         this.iter = iter;
     }
 

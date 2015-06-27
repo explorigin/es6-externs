@@ -1,4 +1,4 @@
-package es6;
+package js;
 
 @:native("Map")
 extern class Map<K, V> {
@@ -10,7 +10,7 @@ extern class Map<K, V> {
     public function get(key:K):V;
     public function has(key:K):Bool;
     public function delete(key:K):Bool;
-    public function keys():es6.Iterator<K>;
-    public function values():es6.Iterator<V>;
+    public function keys():js.Iterator<K>;
+    public function values():js.Iterator<V>;
     public function clear():Void;
 }

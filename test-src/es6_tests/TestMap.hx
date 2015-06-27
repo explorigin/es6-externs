@@ -37,26 +37,26 @@ class TestMap extends haxe.unit.TestCase {
     }
 
     public function testMapIteratorAdapter() {
-        var m = new es6.Map<String, Int>();
+        var m = new js.Map<String, Int>();
         m.set('a', 3);
         m.set('b', 2);
         m.set('c', 1);
 
-        var iter = new es6.Iterator.MapIteratorAdapter<String>(m.keys());
+        var iter = new js.Iterator.MapIteratorAdapter<String>(m.keys());
 
         assertEquals(iter.next(), 'a');
         assertEquals(iter.next(), 'b');
         assertEquals(iter.next(), 'c');
         assertEquals(iter.next(), null);
 
-        var iter = new es6.Iterator.MapIteratorAdapter<Int>(m.values());
+        var iter = new js.Iterator.MapIteratorAdapter<Int>(m.values());
 
         assertEquals(iter.next(), 3);
         assertEquals(iter.next(), 2);
         assertEquals(iter.next(), 1);
         assertEquals(iter.next(), null);
 
-        var iter = new es6.Iterator.MapIteratorAdapter<Int>(m.values());
+        var iter = new js.Iterator.MapIteratorAdapter<Int>(m.values());
 
         assertEquals(iter.hasNext(), true);
         assertEquals(iter.next(), 3);
