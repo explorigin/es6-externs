@@ -6,28 +6,39 @@ import js.Browser;
 using StringTools;
 
 class BenchmarkTrim{
-	static function native(a:Array<String>, count)
-		for (i in 0...count)
-			for (s in a)
-				s.trim();
+	static var index = 0;
+	static var testCounts = [0, 10, 50, 500];
+	static var boundMethods = new Map<Int, Dynamic>();
 
-	static function std(a:Array<String>, count)
+	static function native(a:Array<String>, count) {
+		var data:Array<String> = [];
 		for (i in 0...count)
 			for (s in a)
-				s.ltrim().rtrim();
+				data.push(s.trim());
+		return data;
+	}
 
-	static function both(a:Array<String>, count)
+	static function std(a:Array<String>, count) {
+		var data:Array<String> = [];
 		for (i in 0...count)
 			for (s in a)
-				trimBoth(s);
+				data.push(originalTrim(s));
+		return data;
+	}
+
+	static function both(a:Array<String>, count) {
+		var data:Array<String> = [];
+		for (i in 0...count)
+			for (s in a)
+				data.push(trimBoth(s));
+		return data;
+	}
 
 	static function runTests() {
-		for (white in [0, 10, 50, 500]) {
+		for (white in testCounts) {
 			var count = Std.int(50000 / Math.pow(Math.log(white + 1)+2, 2));//less iterations for more whitespaces
 
 			var data = untyped __js__("testData")[Std.string(white)];
-
-			trace('Trimming ${count * 100} times with an average of $white whitespaces');
 
 			var boundNative = native.bind(data, count);
 			var boundStd = std.bind(data, count);
@@ -37,10 +48,45 @@ class BenchmarkTrim{
 			boundStd();
 			boundBoth();
 
-			measure(boundNative, '(native)');
-			measure(boundStd, '(std)');
-			measure(boundBoth, '(both)');
+			boundMethods[white] = {
+				native: measure.bind(boundNative, '(native)'),
+				std: measure.bind(boundStd, '(std)'),
+				both: measure.bind(boundBoth, '(both)')
+			};
 		}
+
+		gc();
+		haxe.Timer.delay(next, 2000);
+	}
+
+	static function gc() {
+		try {
+			untyped __js__("CollectGarbage()");
+		} catch (e:Dynamic) {
+			try {
+				untyped __js__("window.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsIDOMWindowUtils).garbageCollect();");
+			} catch (e:Dynamic) {}
+		}
+	}
+
+	static function next() {
+		var white = testCounts[index];
+
+		var count = Std.int(50000 / Math.pow(Math.log(white + 1)+2, 2));//less iterations for more whitespaces
+		trace('Trimming ${count * 100} times with an average of $white whitespaces');
+
+		boundMethods[white].native();
+		boundMethods[white].std();
+		boundMethods[white].both();
+		index++;
+
+		gc();
+
+		if (index < testCounts.length)
+			// Give the browser plenty of time to perform a GC.
+			haxe.Timer.delay(next, 2000);
+
+
 	}
 
     static function main(){
@@ -50,8 +96,9 @@ class BenchmarkTrim{
 
     static function measure(func, logMsg) {
 		var s = Timer.stamp();
-		func();
+		var r = func();
 		haxe.Log.trace(Timer.stamp() - s + "s " + logMsg);
+		return r;
     }
 
 	static function leftWhite(s:String, l:Int) {
@@ -83,5 +130,8 @@ class BenchmarkTrim{
 			else
 				s.substring(left, l - right);
 	}
+
+	static function originalTrim(s:String)
+		return s.ltrim().rtrim();
 
 }
