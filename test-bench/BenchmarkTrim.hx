@@ -96,7 +96,12 @@ class BenchmarkTrim{
 
     static function measure(func, logMsg) {
 		var s = Timer.stamp();
-		var r = func();
+		var r:Dynamic;
+		try {
+			r = func();
+		} catch (e:Dynamic) {
+			haxe.Log.trace("(failed) " + e + " " + logMsg);
+		}
 		haxe.Log.trace(Timer.stamp() - s + "s " + logMsg);
 		return r;
     }
