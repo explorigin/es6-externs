@@ -1,5 +1,6 @@
 package js;
 
+// http://www.ecma-international.org/ecma-262/6.0/#sec-map-objects
 @:native("Map")
 extern class Map<K, V> {
     public var size(default, null):Int;

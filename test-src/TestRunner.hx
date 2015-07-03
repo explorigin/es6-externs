@@ -8,6 +8,8 @@ class TestRunner {
 
         r.add(new es6_tests.TestMap());
         r.add(new es6_tests.TestSet());
+        r.add(new es6_tests.TestIterator());
+        r.add(new es6_tests.TestWeakMap());
         r.run();
     }
 

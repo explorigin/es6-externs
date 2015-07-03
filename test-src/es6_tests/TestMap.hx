@@ -4,8 +4,6 @@ import haxe.ds.IntMap;
 import haxe.ds.StringMap;
 import haxe.ds.ObjectMap;
 
-typedef ObjKey = {name: String};
-
 class TestMap extends haxe.unit.TestCase {
     public function testStringMap() {
         var m = new StringMap<Int>();
@@ -34,39 +32,6 @@ class TestMap extends haxe.unit.TestCase {
         for (value in m) {
             assertTrue([3, 2, 1].indexOf(value) != -1);
         }
-    }
-
-    public function testIteratorAdapter() {
-        var m = new js.Map<String, Int>();
-        m.set('a', 3);
-        m.set('b', 2);
-        m.set('c', 1);
-
-        var iter = new js.Iterator.IteratorAdapter<String>(m.keys());
-
-        assertEquals(iter.next(), 'a');
-        assertEquals(iter.next(), 'b');
-        assertEquals(iter.next(), 'c');
-        assertEquals(iter.next(), null);
-
-        var iter = new js.Iterator.IteratorAdapter<Int>(m.values());
-
-        assertEquals(iter.next(), 3);
-        assertEquals(iter.next(), 2);
-        assertEquals(iter.next(), 1);
-        assertEquals(iter.next(), null);
-
-        var iter = new js.Iterator.IteratorAdapter<Int>(m.values());
-
-        assertEquals(iter.hasNext(), true);
-        assertEquals(iter.next(), 3);
-        assertEquals(iter.hasNext(), true);
-        assertEquals(iter.next(), 2);
-        assertEquals(iter.hasNext(), true);
-        assertEquals(iter.next(), 1);
-        assertEquals(iter.hasNext(), false);
-        assertEquals(iter.next(), null);
-        assertEquals(iter.hasNext(), false);
     }
 
     public function testIntMap() {
