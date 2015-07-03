@@ -9,7 +9,7 @@ typedef Iterator<T> = {
     next: Void -> IteratorValue<T>
 };
 
-class MapIteratorAdapter<T> {
+class IteratorAdapter<T> {
     var iter: js.Iterator<T>;
     var done: Bool;
     var initialized: Bool = false;

@@ -14,11 +14,11 @@ package haxe.ds;
     public inline function remove( key : Int ) : Bool return m.delete(key);
 
     public function keys() : Iterator<Int> {
-        return new js.Iterator.MapIteratorAdapter<Int>(m.keys());
+        return new js.Iterator.IteratorAdapter<Int>(m.keys());
     }
 
     public inline function iterator() : Iterator<T> {
-        return new js.Iterator.MapIteratorAdapter<T>(m.values());
+        return new js.Iterator.IteratorAdapter<T>(m.values());
     }
 
     public function toString() : String {
