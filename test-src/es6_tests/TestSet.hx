@@ -22,14 +22,16 @@ class TestSet extends haxe.unit.TestCase {
 
         var i = s.keys();
         var val = i.next();
-        while (val.done) {
+        while (!val.done) {
             assertTrue(['a', 'b', 'c'].indexOf(val.value) != -1);
+            val = i.next();
         }
 
         i = s.values();
         val = i.next();
         while (!val.done) {
             assertTrue(['a', 'b', 'c'].indexOf(val.value) != -1);
+            val = i.next();
         }
     }
 
