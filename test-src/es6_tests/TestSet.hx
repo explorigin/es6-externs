@@ -34,37 +34,4 @@ class TestSet extends haxe.unit.TestCase {
             val = i.next();
         }
     }
-
-    public function testIteratorAdapter() {
-        var s = new js.Set<String>();
-        s.add('a');
-        s.add('b');
-        s.add('c');
-
-        var iter = new js.Iterator.IteratorAdapter<String>(s.keys());
-
-        assertEquals(iter.next(), 'a');
-        assertEquals(iter.next(), 'b');
-        assertEquals(iter.next(), 'c');
-        assertEquals(iter.next(), null);
-
-        var iter = new js.Iterator.IteratorAdapter<String>(s.values());
-
-        assertEquals(iter.next(), 'a');
-        assertEquals(iter.next(), 'b');
-        assertEquals(iter.next(), 'c');
-        assertEquals(iter.next(), null);
-
-        var iter = new js.Iterator.IteratorAdapter<String>(s.values());
-
-        assertEquals(iter.hasNext(), true);
-        assertEquals(iter.next(), 'a');
-        assertEquals(iter.hasNext(), true);
-        assertEquals(iter.next(), 'b');
-        assertEquals(iter.hasNext(), true);
-        assertEquals(iter.next(), 'c');
-        assertEquals(iter.hasNext(), false);
-        assertEquals(iter.next(), null);
-        assertEquals(iter.hasNext(), false);
-    }
 }

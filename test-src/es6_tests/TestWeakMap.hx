@@ -1,22 +1,20 @@
 package es6_tests;
 
-import haxe.ds.WeakMap;
-
 class TestWeakMap extends haxe.unit.TestCase {
     public function testWeakMap() {
-        var m = new WeakMap<ObjKey, Int>();
+        var m = new js.WeakMap<ObjKey, Int>();
         var key:ObjKey = {name: 'a'};
 
-        assertEquals(m.exists(key), false);
+        assertEquals(m.has(key), false);
 
         m.set(key, 1);
 
         m.get(key);
-        var aExists = m.exists(key);
+        var aExists = m.has(key);
         if (aExists) {
-            m.remove(key);
+            m.delete(key);
 
-            assertEquals(m.exists(key), false);
+            assertEquals(m.has(key), false);
         } else {
             trace("Did not test remove.");
         }

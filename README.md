@@ -1,6 +1,6 @@
-# ES6 Features for Javascript
+# ES6 Externs for Haxe
 
-This project is an experiment to see how many ES6 features can be supported by Haxe purely with macros.
+This project provides externs for ES6 data structures and Haxe-integration tools.
 
 ## Run tests
 
@@ -16,8 +16,5 @@ To ensure that your platform can run the ES6 output correctly, run the tests.
 - Iterator
 - WeakMap
 
-## Haxe Core Types
-- StringMap, IntMap, ObjectMap
-    - implemented as a wrapper around ES6 Map type
-- WeakMap
-    - partially implemented as a wrapper around ES6 WeakMap type
+## Tools
+- IteratorAdapter - wraps ES6 Iterator to be compatibile with Haxe's Iterator interface.
