@@ -4,7 +4,7 @@ package js;
 // http://www.ecma-international.org/ecma-262/6.0/#sec-weakmap-objects
 @:native("WeakMap")
 extern class WeakMap<K, V> {
-    public var length(default, null):Int;
+    public var length(default, null):Int; // This is always 0
 
     public function new();
 
