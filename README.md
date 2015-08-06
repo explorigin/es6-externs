@@ -15,6 +15,7 @@ To ensure that your platform can run the ES6 output correctly, run the tests.
 - Map
 - Iterator
 - WeakMap
+- Symbol
 
 ## Tools
 - IteratorAdapter - wraps ES6 Iterator to be compatibile with Haxe's Iterator interface.
