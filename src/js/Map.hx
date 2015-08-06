@@ -1,5 +1,6 @@
 package js;
 
+#if js
 // http://www.ecma-international.org/ecma-262/6.0/#sec-map-objects
 @:native("Map")
 extern class Map<K, V> {
@@ -15,3 +16,4 @@ extern class Map<K, V> {
     public function values():js.Iterator<V>;
     public function clear():Void;
 }
+#end

@@ -1,5 +1,6 @@
 package js.tools;
 
+#if js
 class IteratorAdapter<T> {
     var iter: js.Iterator<T>;
     var done: Bool;
@@ -36,3 +37,5 @@ class IteratorAdapter<T> {
         return val;
     }
 }
+
+#end
