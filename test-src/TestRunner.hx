@@ -10,6 +10,7 @@ class TestRunner {
         r.add(new es6_tests.TestSet());
         r.add(new es6_tests.TestIterator());
         r.add(new es6_tests.TestWeakMap());
+        r.add(new es6_tests.TestWeakSet());
         r.add(new es6_tests.TestSymbol());
         r.run();
     }
