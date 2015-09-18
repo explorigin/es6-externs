@@ -15,6 +15,7 @@ To ensure that your platform can run the ES6 output correctly, run the tests.
 - Map
 - Iterator
 - WeakMap
+- WeakSet
 - Symbol
 
 ## Tools

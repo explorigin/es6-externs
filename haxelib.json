@@ -4,9 +4,9 @@
     "license": "MIT",
     "tags": ["js", "web", "html5", "haxe", "javascript", "macro", "html", "ufront"],
     "description": "This library provides externs for ES6 data structures.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "classPath": "src/",
-    "releasenote": "Initial release.",
+    "releasenote": "Added WeakSet and changed Symbol instantiation.",
     "contributors": ["explorigin"],
     "dependencies": {
     }
