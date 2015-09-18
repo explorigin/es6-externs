@@ -2,15 +2,15 @@ package es6_tests;
 
 class TestSymbol extends haxe.unit.TestCase {
     public function testSymbolEquality() {
-        var a:js.Symbol = js.Symbol.get('foo');
-        var b:js.Symbol = js.Symbol.get('foo');
+        var a:js.Symbol = new js.Symbol('foo');
+        var b:js.Symbol = new js.Symbol('foo');
 
         assertFalse(a == b);
     }
 
     public function testSymbolAsMapKey() {
         var m = new js.Map<js.Symbol, Int>();
-        var key:js.Symbol = js.Symbol.get();
+        var key:js.Symbol = new js.Symbol();
 
         assertEquals(m.has(key), false);
 

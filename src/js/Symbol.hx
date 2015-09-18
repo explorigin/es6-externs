@@ -4,7 +4,7 @@ package js;
 @:native("Symbol")
 extern class Symbol {
     @:selfCall
-    public static function get(description:Null<String>=null):Symbol;
+    public function new(description:Null<String>=null);
 
     @:native("for")
     static public function forKey(key:String):Symbol;
